@@ -1,0 +1,6 @@
+.roundedRect {
+  background-color: aqua;
+  border-radius: 10px;
+  height: 100px;
+  width: 100%;
+}

@@ -1,0 +1,19 @@
+FROM node:12 as builder
+
+WORKDIR /container
+RUN npm install -g lerna
+
+RUN apt-get update &&  \
+    apt-get install -y vim && \
+    apt-get install -y zsh && \
+    wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
+
+# set zsh as shell
+ENV SHELL /bin/zsh
+ENV TERM xterm
+ENV ZSH_THEME agnoster
+
+
+COPY . ./
+
+RUN lerna bootstrap
